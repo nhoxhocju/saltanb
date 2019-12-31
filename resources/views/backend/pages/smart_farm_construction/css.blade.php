@@ -1,0 +1,1 @@
+* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin:0;}#ivfsv{font-size:18px;}#i1wah{font-size:18px;}#ig7wp{font-size:18px;}#iljfb{font-size:18px;}#i3v0h{font-size:18px;}#ilfzj{padding:0 10px 10px 10px;}

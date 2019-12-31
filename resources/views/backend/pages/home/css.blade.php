@@ -1,0 +1,1 @@
+* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin:0;}.row{display:table;padding:10px;width:100%;}.cell{width:8%;display:table-cell;height:75px;}#igbyx{color:black;text-align:left;float:none;display:block;position:static;width:100%;}#ilfzj{padding:0 10px 10px 10px;}@media (max-width: 768px){.cell{width:100%;display:block;}}

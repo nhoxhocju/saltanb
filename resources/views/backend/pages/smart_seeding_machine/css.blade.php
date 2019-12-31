@@ -1,0 +1,1 @@
+* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin:0;}#ilfzj{padding:0 10px 10px 10px;}
