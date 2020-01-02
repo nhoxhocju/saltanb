@@ -32,7 +32,7 @@ class PostObserver
      */
     public function updated(Post $post)
     {
-        if(request('type') != 'trash') {
+        if(request('type') != 'trash' && request('type') != 'restore') {
             $postFillable = $this->getPostFillable();
             $postLanguageFillable = $this->getFilterData($postFillable);
             $languages = Language::all();
@@ -49,6 +49,14 @@ class PostObserver
     public function deleted(Post $post)
     {
         //
+    }
+
+    public function deleting(Post $post) {
+        // $post = Post::find(request('id'));
+        $result = $this->checkPostWereTrashed($post->id);
+        if($result == true) {
+            $result = $post->languages()->detach();
+        }
     }
 
     /**
@@ -95,6 +103,14 @@ class PostObserver
                 $post->languages()->updateExistingPivot($language, $data);
             }
         }
+    }
+
+    private function checkPostWereTrashed($id) {
+        $post = Post::where([['deleted_at', '<>', null], ['id', '=', $id]])->count();
+        if($post > 0) {
+            return true;
+        }
+        return false;
     }
 
     // private function updateDataPostLanguage($post, $postLanguageFillable, $languages) {

@@ -364,7 +364,7 @@
                             <li class="{{ (Route::currentRouteName() == 'backend.pages.index') ? 'active' : ' ' }}"><a href="{{ route('backend.pages.index') }}"><i class="fa fa-circle-o"></i> List Pages</a></li>
                         </ul>
                     </li>
-                    <li class="{{ (Route::currentRouteName() == 'backend.posts.index' || Route::currentRouteName() == 'backend.posts.create') ? 'active' : ' ' }} treeview">
+                    <li class="{{ (Route::currentRouteName() == 'backend.posts.index' || Route::currentRouteName() == 'backend.posts.create' || Route::currentRouteName() == 'backend.posts.trashes.show_trash') ? 'active' : ' ' }} treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
                             <span>Posts</span>
@@ -375,6 +375,7 @@
                         <ul class="treeview-menu">
                             <li class="{{ (Route::currentRouteName() == 'backend.posts.index') ? 'active' : ' ' }}"><a href="{{ route('backend.posts.index') }}"><i class="fa fa-circle-o"></i> List Posts</a></li>
                             <li class="{{ (Route::currentRouteName() == 'backend.posts.create') ? 'active' : ' ' }}"><a href="{{ route('backend.posts.create') }}"><i class="fa fa-circle-o"></i> Create Post</a></li>
+                            <li class="{{ (Route::currentRouteName() == 'backend.posts.trashes.show_trash') ? 'active' : ' ' }}"><a href="{{ route('backend.posts.trashes.show_trash') }}"><i class="fa fa-circle-o"></i> List Posts Trashed</a></li>
                         </ul>
                     </li>
                 </ul>

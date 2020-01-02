@@ -97,5 +97,11 @@ Route::group(['namespace' => 'Backend', 'middleware' => 'auth', 'prefix' => 'cms
         Route::get('/edit/{id}', 'EditController')->name('edit');
         Route::put('/update/{id}', 'UpdateController')->name('update');
         Route::put('/trash/{id}', 'TrashController')->name('trash');
+        Route::delete('/delete/{id}', 'DeleteController')->name('delete');
+        Route::group(['namespace' => 'Trash', 'prefix' => 'trashes', 'as' => 'trashes.'], function() {
+            Route::get('/', 'ShowTrashController')->name('show_trash');
+            Route::get('/preview/{id}', 'PreviewPostTrashedController')->name('preview_post_trashed');
+            Route::put('/restore/{id}', 'RestoreController')->name('restore');
+        });
     });
 });

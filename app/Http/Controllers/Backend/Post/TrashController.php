@@ -12,6 +12,11 @@ class TrashController extends Controller
 {
     public function __invoke(Request $request, $id) {
 
+        $result = $this->checkPostWereTrashed($id);
+        if($result == true) {
+            $message = $this->getMessage(false);
+            return redirect()->route($this->getRoute())->with($message);
+        }
         $post = Post::find($id);
         // printf($post);exit;
         $now = new \DateTime();
@@ -47,6 +52,14 @@ class TrashController extends Controller
             return ['message' => __('Move to trash post completed!'), 'type' => 'success'];
         }
         return ['message' => __('An error occurred! Please try again!'), 'type' => 'error'];
+    }
+
+    private function checkPostWereTrashed($id) {
+        $post = Post::where([['deleted_at', '<>', null], ['id', '=', $id]])->count();
+        if($post > 0) {
+            return true;
+        }
+        return false;
     }
 
     private function moveToTrash($post, $data) {
