@@ -74,7 +74,19 @@ Route::group(['prefix' => 'pages', 'as' => 'pages.'], function() {
     Route::get('/smart_farm_operation', function () {
         return view('frontend.pages.smart_farm_operation');
     })->name('smart_farm_operation');
+
+    Route::get('/q_and_a', function () {
+        return view('frontend.pages.q_and_a');
+    })->name('q_and_a');
 });
+
+Route::group(['namespace' => 'Frontend\Community', 'prefix' => 'pages', 'as' => 'pages.'], function () {
+    Route::get('/public_notice', 'PublicNoticeController')->name('public_notice');
+    Route::get('/smart_farm_news', 'SmartFarmNewsController')->name('smart_farm_news');
+    Route::get('/detail_post/{id}', 'ShowController')->name('detail_post');
+});
+
+// Route::get('/public_notice', 'Frontend/Community/PublicNoticeController')->name('public_notice');
 
 Auth::routes();
 
